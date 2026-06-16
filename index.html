@@ -1,24 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>School of Fun — The Great Outdoors</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <title>pv4</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --forest:  #1B3A2D;
-      --gold:    #E8A923;
-      --cream:   #F7F3EC;
-      --bark:    #5C3D1E;
-      --sky:     #C9E4F0;
-      --leaf:    #3D7A55;
-      --text:    #1a1a1a;
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    html { scroll-behavior: smooth; }
+    :root {
+      --forest: #1B3A2D;
+      --gold: #E8A923;
+      --cream: #F7F3EC;
+      --bark: #5C3D1E;
+      --sky: #C9E4F0;
+      --leaf: #3D7A55;
+      --text: #1a1a1a;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       font-family: 'Inter', sans-serif;
@@ -51,11 +62,14 @@
     /* Stars */
     .stars {
       position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 50%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 50%;
       z-index: 1;
       pointer-events: none;
     }
+
     .stars span {
       position: absolute;
       border-radius: 50%;
@@ -64,14 +78,20 @@
     }
 
     @keyframes twinkle {
-      from { opacity: 0.3; }
-      to   { opacity: 1; }
+      from {
+        opacity: 0.3;
+      }
+
+      to {
+        opacity: 1;
+      }
     }
 
     /* SVG treeline */
     .treeline {
       position: absolute;
-      bottom: 0; left: 0;
+      bottom: 0;
+      left: 0;
       width: 100%;
       z-index: 2;
     }
@@ -129,9 +149,10 @@
       text-decoration: none;
       transition: transform 0.2s, box-shadow 0.2s;
     }
+
     .hero-cta:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
     }
 
     /* Moon */
@@ -189,7 +210,7 @@
       border-radius: 4px;
       overflow: hidden;
       border-bottom: 4px solid var(--gold);
-      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
       transition: transform 0.25s, box-shadow 0.25s;
       display: flex;
       flex-direction: column;
@@ -197,7 +218,7 @@
 
     .card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 10px 28px rgba(0,0,0,0.13);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.13);
     }
 
     .card-thumb {
@@ -250,7 +271,10 @@
       padding-bottom: 1px;
       transition: color 0.2s;
     }
-    .card-link:hover { color: var(--forest); }
+
+    .card-link:hover {
+      color: var(--forest);
+    }
 
     /* ── FOOTER ── */
     footer {
@@ -268,176 +292,549 @@
     }
 
     @media (max-width: 600px) {
-      .hero-content { margin-bottom: 140px; }
-      .moon { width: 55px; height: 55px; right: 8%; }
+      .hero-content {
+        margin-bottom: 140px;
+      }
+
+      .moon {
+        width: 55px;
+        height: 55px;
+        right: 8%;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .stars span { animation: none; }
-      .card, .hero-cta { transition: none; }
+      .stars span {
+        animation: none;
+      }
+
+      .card,
+      .hero-cta {
+        transition: none;
+      }
+    }
+
+    /* ── PASSWORD GATE ── */
+    #gate {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: linear-gradient(to bottom, #0d2238 0%, #1a3d5c 35%, #2d6e8e 60%, var(--forest) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.6s ease;
+    }
+
+    #gate.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .gate-moon {
+      position: absolute;
+      top: 10%;
+      right: 12%;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #fff9e6, #f5d97a);
+      box-shadow: 0 0 40px 10px rgba(248, 220, 100, 0.3);
+    }
+
+    .gate-stars {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .gate-stars span {
+      position: absolute;
+      border-radius: 50%;
+      background: white;
+      animation: twinkle 3s infinite alternate;
+    }
+
+    .gate-box {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 3rem 2.5rem;
+      background: rgba(11, 30, 20, 0.6);
+      border: 1px solid rgba(232, 169, 35, 0.25);
+      border-radius: 4px;
+      backdrop-filter: blur(8px);
+      width: min(420px, 90vw);
+    }
+
+    .gate-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .gate-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 6vw, 3rem);
+      font-weight: 900;
+      color: var(--cream);
+      line-height: 1.1;
+      margin-bottom: 0.4rem;
+    }
+
+    .gate-title span {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .gate-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--sky);
+      margin-bottom: 2rem;
+    }
+
+    .gate-input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1.5px solid rgba(232, 169, 35, 0.4);
+      border-radius: 2px;
+      color: var(--cream);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.05em;
+      outline: none;
+      transition: border-color 0.2s;
+      margin-bottom: 0.75rem;
+    }
+
+    .gate-input::placeholder {
+      color: rgba(247, 243, 236, 0.35);
+    }
+
+    .gate-input:focus {
+      border-color: var(--gold);
+    }
+
+    .gate-input.error {
+      border-color: #e05c5c;
+      animation: shake 0.35s ease;
+    }
+
+    @keyframes shake {
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      25% {
+        transform: translateX(-6px);
+      }
+
+      75% {
+        transform: translateX(6px);
+      }
+    }
+
+    .gate-btn {
+      width: 100%;
+      padding: 0.85rem;
+      background: var(--gold);
+      color: var(--forest);
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .gate-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .gate-error-msg {
+      margin-top: 0.75rem;
+      font-size: 0.8rem;
+      color: #e05c5c;
+      min-height: 1.1em;
+    }
+
+    /* ── NAV MENU ── */
+    #nav-menu {
+      position: fixed;
+      top: 1.25rem;
+      left: 1.25rem;
+      z-index: 1000;
+    }
+
+    #nav-toggle {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 42px;
+      height: 42px;
+      padding: 10px;
+      background: var(--forest);
+      border: 1px solid rgba(232, 169, 35, 0.35);
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    #nav-toggle:hover {
+      background: #244d3c;
+    }
+
+    #nav-toggle span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--cream);
+      border-radius: 1px;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+      transform-origin: center;
+    }
+
+    #nav-menu.open #nav-toggle span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    #nav-menu.open #nav-toggle span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    #nav-menu.open #nav-toggle span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    #nav-dropdown {
+      position: absolute;
+      top: calc(100% + 0.5rem);
+      left: 0;
+      background: var(--forest);
+      border: 1px solid rgba(232, 169, 35, 0.25);
+      border-radius: 3px;
+      min-width: 160px;
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 0.3s ease, opacity 0.25s ease;
+      pointer-events: none;
+    }
+
+    #nav-menu.open #nav-dropdown {
+      max-height: 320px;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    #nav-dropdown a {
+      display: block;
+      padding: 0.7rem 1.25rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--cream);
+      text-decoration: none;
+      border-left: 2px solid transparent;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+    }
+
+    #nav-dropdown a:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-left-color: var(--gold);
+      color: var(--gold);
+    }
+
+    #nav-dropdown a+a {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
     }
   </style>
 </head>
+
 <body>
 
-<!-- ── HERO ── -->
-<header class="hero" id="top">
-
-  <div class="moon"></div>
-
-  <!-- Stars -->
-  <div class="stars" aria-hidden="true" id="starsContainer"></div>
-
-  <div class="hero-content">
-    <p class="hero-eyebrow">Welcome to</p>
-    <h1 class="hero-title">School of <span>Fun</span></h1>
-    <p class="hero-subtitle">The Great Outdoors</p>
-    <a href="#projects" class="hero-cta">Explore Projects ↓</a>
+  <!-- ── PASSWORD GATE ── -->
+  <div id="gate" role="dialog" aria-modal="true" aria-label="Password required">
+    <div class="gate-moon" aria-hidden="true"></div>
+    <div class="gate-stars" aria-hidden="true" id="gateStars"></div>
+    <div class="gate-box">
+      <p class="gate-eyebrow">pv4 is back!</p>
+      <h1 class="gate-title">School of <span>Fun</span></h1>
+      <p class="gate-subtitle">The Great Outdoors</p>
+      <form id="gateForm" novalidate>
+        <input id="gateInput" class="gate-input" type="password" placeholder="Enter password"
+          autocomplete="current-password" aria-label="Password" autofocus />
+        <button type="submit" class="gate-btn">Enter ↓</button>
+      </form>
+      <p class="gate-error-msg" id="gateError" aria-live="polite"></p>
+    </div>
   </div>
 
-  <!-- SVG Treeline -->
-  <svg class="treeline" viewBox="0 0 1440 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
-    <!-- Back hills -->
-    <ellipse cx="300" cy="240" rx="400" ry="120" fill="#1B3A2D" opacity="0.6"/>
-    <ellipse cx="1100" cy="240" rx="500" ry="100" fill="#1B3A2D" opacity="0.5"/>
-    <!-- Tree silhouettes back row -->
-    <g fill="#163326" opacity="0.8">
-      <polygon points="60,180 90,80 120,180"/>
-      <polygon points="100,180 135,60 170,180"/>
-      <polygon points="155,180 180,100 205,180"/>
-      <polygon points="220,180 255,55 290,180"/>
-      <polygon points="275,180 305,85 335,180"/>
-      <polygon points="340,180 370,70 400,180"/>
-      <polygon points="400,180 435,90 470,180"/>
-      <polygon points="470,180 505,65 540,180"/>
-      <polygon points="540,180 565,95 590,180"/>
-      <polygon points="600,180 640,50 680,180"/>
-      <polygon points="680,180 710,80 740,180"/>
-      <polygon points="740,180 775,60 810,180"/>
-      <polygon points="810,180 845,85 880,180"/>
-      <polygon points="880,180 915,70 950,180"/>
-      <polygon points="950,180 985,90 1020,180"/>
-      <polygon points="1020,180 1060,55 1100,180"/>
-      <polygon points="1100,180 1130,80 1160,180"/>
-      <polygon points="1160,180 1195,65 1230,180"/>
-      <polygon points="1230,180 1260,90 1290,180"/>
-      <polygon points="1300,180 1335,70 1370,180"/>
-      <polygon points="1370,180 1405,85 1440,180"/>
-    </g>
-    <!-- Front row darker trees -->
-    <g fill="#0e2419">
-      <polygon points="0,220 40,100 80,220"/>
-      <polygon points="70,220 115,75 160,220"/>
-      <polygon points="200,220 240,110 280,220"/>
-      <polygon points="320,220 370,80 420,220"/>
-      <polygon points="500,220 545,90 590,220"/>
-      <polygon points="650,220 700,65 750,220"/>
-      <polygon points="800,220 840,95 880,220"/>
-      <polygon points="950,220 1000,70 1050,220"/>
-      <polygon points="1100,220 1145,85 1190,220"/>
-      <polygon points="1280,220 1330,75 1380,220"/>
-      <polygon points="1380,220 1420,100 1460,220"/>
-    </g>
-    <!-- Ground fill -->
-    <rect x="0" y="195" width="1440" height="25" fill="#0e2419"/>
-  </svg>
+  <!-- ── NAV MENU ── -->
+  <nav id="nav-menu" aria-label="Site navigation">
+    <button id="nav-toggle" aria-expanded="false" aria-controls="nav-dropdown" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div id="nav-dropdown" role="menu">
+      <a href="#top" role="menuitem">Home</a>
+      <a href="#syllabus" role="menuitem">Syllabus</a>
+      <a href="#classes" role="menuitem">Classes</a>
+      <a href="#activities" role="menuitem">Activities</a>
+      <a href="#about" role="menuitem">About</a>
+    </div>
+  </nav>
 
-</header>
+  <!-- ── HERO ── -->
+  <header class="hero" id="top">
 
-<!-- ── PROJECTS ── -->
-<main class="projects" id="projects">
-  <div class="section-header">
-    <span class="section-label">Our Work</span>
-    <h2 class="section-title">Featured Projects</h2>
-  </div>
+    <div class="moon"></div>
 
-  <div class="card-grid" id="cardGrid">
+    <!-- Stars -->
+    <div class="stars" aria-hidden="true" id="starsContainer"></div>
 
-    <article class="card">
-      <div class="card-thumb" style="background:#e8f5e9;">🌲</div>
-      <div class="card-body">
-        <span class="card-tag">Nature Study</span>
-        <h3 class="card-title">Forest Field Guide</h3>
-        <p class="card-desc">An interactive guide to local trees, plants, and wildlife — built for curious explorers of all ages.</p>
-        <a href="#" class="card-link">View Project →</a>
-      </div>
-    </article>
+    <div class="hero-content">
+      <p class="hero-eyebrow">pv4 2026</p>
+      <p class="hero-eyebrow">yes this is vibe-coded, no we're not sorry</p>
+      <h1 class="hero-title">School of <span>Fun</span></h1>
+      <p class="hero-subtitle">The Great Outdoors</p>
+      <a href="#activities" class="hero-cta">Explore Activities ↓</a>
+    </div>
 
-    <article class="card">
-      <div class="card-thumb" style="background:#fff8e1;">⛺</div>
-      <div class="card-body">
-        <span class="card-tag">Camp Life</span>
-        <h3 class="card-title">Campfire Stories</h3>
-        <p class="card-desc">A collaborative storytelling platform where campers share tales from their adventures under the stars.</p>
-        <a href="#" class="card-link">View Project →</a>
-      </div>
-    </article>
+    <!-- SVG Treeline -->
+    <svg class="treeline" viewBox="0 0 1440 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"
+      aria-hidden="true">
+      <!-- Back hills -->
+      <ellipse cx="300" cy="240" rx="400" ry="120" fill="#1B3A2D" opacity="0.6" />
+      <ellipse cx="1100" cy="240" rx="500" ry="100" fill="#1B3A2D" opacity="0.5" />
+      <!-- Tree silhouettes back row -->
+      <g fill="#163326" opacity="0.8">
+        <polygon points="60,180 90,80 120,180" />
+        <polygon points="100,180 135,60 170,180" />
+        <polygon points="155,180 180,100 205,180" />
+        <polygon points="220,180 255,55 290,180" />
+        <polygon points="275,180 305,85 335,180" />
+        <polygon points="340,180 370,70 400,180" />
+        <polygon points="400,180 435,90 470,180" />
+        <polygon points="470,180 505,65 540,180" />
+        <polygon points="540,180 565,95 590,180" />
+        <polygon points="600,180 640,50 680,180" />
+        <polygon points="680,180 710,80 740,180" />
+        <polygon points="740,180 775,60 810,180" />
+        <polygon points="810,180 845,85 880,180" />
+        <polygon points="880,180 915,70 950,180" />
+        <polygon points="950,180 985,90 1020,180" />
+        <polygon points="1020,180 1060,55 1100,180" />
+        <polygon points="1100,180 1130,80 1160,180" />
+        <polygon points="1160,180 1195,65 1230,180" />
+        <polygon points="1230,180 1260,90 1290,180" />
+        <polygon points="1300,180 1335,70 1370,180" />
+        <polygon points="1370,180 1405,85 1440,180" />
+      </g>
+      <!-- Front row darker trees -->
+      <g fill="#0e2419">
+        <polygon points="0,220 40,100 80,220" />
+        <polygon points="70,220 115,75 160,220" />
+        <polygon points="200,220 240,110 280,220" />
+        <polygon points="320,220 370,80 420,220" />
+        <polygon points="500,220 545,90 590,220" />
+        <polygon points="650,220 700,65 750,220" />
+        <polygon points="800,220 840,95 880,220" />
+        <polygon points="950,220 1000,70 1050,220" />
+        <polygon points="1100,220 1145,85 1190,220" />
+        <polygon points="1280,220 1330,75 1380,220" />
+        <polygon points="1380,220 1420,100 1460,220" />
+      </g>
+      <!-- Ground fill -->
+      <rect x="0" y="195" width="1440" height="25" fill="#0e2419" />
+    </svg>
 
-    <article class="card">
-      <div class="card-thumb" style="background:#e3f2fd;">🗺️</div>
-      <div class="card-body">
-        <span class="card-tag">Navigation</span>
-        <h3 class="card-title">Trail Mapper</h3>
-        <p class="card-desc">Student-built trail maps with elevation data, waypoints, and notes from real hikes in the field.</p>
-        <a href="#" class="card-link">View Project →</a>
-      </div>
-    </article>
+  </header>
 
-    <article class="card">
-      <div class="card-thumb" style="background:#fce4ec;">🌸</div>
-      <div class="card-body">
-        <span class="card-tag">Botany</span>
-        <h3 class="card-title">Wildflower Watch</h3>
-        <p class="card-desc">A seasonal bloom tracker crowdsourced by students, visualizing when and where wildflowers appear each year.</p>
-        <a href="#" class="card-link">View Project →</a>
-      </div>
-    </article>
+  <!-- ── SYLLABUS ── -->
+  <section class="projects" id="syllabus">
+    <div class="section-header">
+      <span class="section-label">Camp Overview</span>
+      <h2 class="section-title">Syllabus</h2>
+    </div>
+  </section>
 
-    <article class="card">
-      <div class="card-thumb" style="background:#e8f5e9;">🐦</div>
-      <div class="card-body">
-        <span class="card-tag">Wildlife</span>
-        <h3 class="card-title">Bird Call Archive</h3>
-        <p class="card-desc">Recordings, spectrograms, and drawings of birds spotted on campus — an ever-growing audio field journal.</p>
-        <a href="#" class="card-link">View Project →</a>
-      </div>
-    </article>
+  <!-- ── CLASSES ── -->
+  <section class="projects" id="classes">
+    <div class="section-header">
+      <span class="section-label">Yearbook photos</span>
+      <h2 class="section-title">Classes</h2>
+    </div>
+  </section>
 
-    <article class="card">
-      <div class="card-thumb" style="background:#f3e5f5;">🌙</div>
-      <div class="card-body">
-        <span class="card-tag">Astronomy</span>
-        <h3 class="card-title">Night Sky Log</h3>
-        <p class="card-desc">Student stargazing journals combined into a living atlas of constellations, planets, and memorable nights.</p>
-        <a href="#" class="card-link">View Project →</a>
-      </div>
-    </article>
+  <!-- ── ACTIVITIES ── -->
+  <main class="projects" id="activities">
+    <div class="section-header">
+      <span class="section-label">Some fun stuff in store!!</span>
+      <h2 class="section-title">Activities</h2>
+    </div>
 
-  </div>
-</main>
+    <div class="card-grid" id="cardGrid">
 
-<!-- ── FOOTER ── -->
-<footer>
-  <strong>School of Fun</strong>
-  <p style="margin-top:0.4rem; opacity:0.7;">The Great Outdoors · Made with curiosity &amp; fresh air</p>
-</footer>
+      <article class="card">
+        <div class="card-thumb" style="background:#e8f5e9;">🌲</div>
+        <div class="card-body">
+          <span class="card-tag">Nature Study</span>
+          <h3 class="card-title">Forest Field Guide</h3>
+          <p class="card-desc">An interactive guide to local trees, plants, and wildlife — built for curious explorers
+            of all ages.</p>
+        </div>
+      </article>
 
-<script>
-  // Generate stars
-  const container = document.getElementById('starsContainer');
-  for (let i = 0; i < 80; i++) {
-    const s = document.createElement('span');
-    const size = Math.random() * 2.5 + 0.5;
-    s.style.cssText = `
-      width:${size}px; height:${size}px;
-      top:${Math.random() * 100}%;
-      left:${Math.random() * 100}%;
-      animation-delay:${Math.random() * 3}s;
-      animation-duration:${2 + Math.random() * 3}s;
-    `;
-    container.appendChild(s);
-  }
-</script>
+      <article class="card">
+        <div class="card-thumb" style="background:#fff8e1;">⛺</div>
+        <div class="card-body">
+          <span class="card-tag">Camp Life</span>
+          <h3 class="card-title">Campfire Stories</h3>
+          <p class="card-desc">A collaborative storytelling platform where campers share tales from their adventures
+            under the stars.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-thumb" style="background:#e3f2fd;">🗺️</div>
+        <div class="card-body">
+          <span class="card-tag">Navigation</span>
+          <h3 class="card-title">Trail Mapper</h3>
+          <p class="card-desc">Student-built trail maps with elevation data, waypoints, and notes from real hikes in the
+            field.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-thumb" style="background:#fce4ec;">🌸</div>
+        <div class="card-body">
+          <span class="card-tag">Botany</span>
+          <h3 class="card-title">Wildflower Watch</h3>
+          <p class="card-desc">A seasonal bloom tracker crowdsourced by students, visualizing when and where wildflowers
+            appear each year.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-thumb" style="background:#e8f5e9;">🐦</div>
+        <div class="card-body">
+          <span class="card-tag">Wildlife</span>
+          <h3 class="card-title">Bird Call Archive</h3>
+          <p class="card-desc">Recordings, spectrograms, and drawings of birds spotted on campus — an ever-growing audio
+            field journal.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-thumb" style="background:#f3e5f5;">🌙</div>
+        <div class="card-body">
+          <span class="card-tag">Astronomy</span>
+          <h3 class="card-title">Night Sky Log</h3>
+          <p class="card-desc">Student stargazing journals combined into a living atlas of constellations, planets, and
+            memorable nights.</p>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- ── ABOUT ── -->
+  <section class="projects" id="about">
+    <div class="section-header">
+      <span class="section-label">YAKWTFGO but here's information anyways</span>
+      <h2 class="section-title">What the heck is pv4?!</h2>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <strong>The School of Fun</strong>
+    <p style="margin-top:0.4rem; opacity:0.7;">PV4 2026: The Great Outdoors</p>
+  </footer>
+
+  <script>
+    function makeStars(containerId, count) {
+      const container = document.getElementById(containerId);
+      for (let i = 0; i < count; i++) {
+        const s = document.createElement('span');
+        const size = Math.random() * 2.5 + 0.5;
+        s.style.cssText = `
+        width:${size}px; height:${size}px;
+        top:${Math.random() * 100}%;
+        left:${Math.random() * 100}%;
+        animation-delay:${Math.random() * 3}s;
+        animation-duration:${2 + Math.random() * 3}s;
+      `;
+        container.appendChild(s);
+      }
+    }
+
+    makeStars('starsContainer', 80);
+    makeStars('gateStars', 80);
+
+    // Password gate
+    const PASS = 'topsecret!';
+    const gate = document.getElementById('gate');
+    const form = document.getElementById('gateForm');
+    const input = document.getElementById('gateInput');
+    const errorMsg = document.getElementById('gateError');
+
+    if (sessionStorage.getItem('sof_auth') === '1') {
+      gate.style.display = 'none';
+    }
+
+    // Nav menu toggle
+    const navMenu = document.getElementById('nav-menu');
+    const navToggle = document.getElementById('nav-toggle');
+
+    navToggle.addEventListener('click', function () {
+      const isOpen = navMenu.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen);
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!navMenu.contains(e.target)) {
+        navMenu.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    document.getElementById('nav-dropdown').querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (input.value === PASS) {
+        sessionStorage.setItem('sof_auth', '1');
+        gate.classList.add('fade-out');
+        gate.addEventListener('transitionend', () => gate.remove(), { once: true });
+      } else {
+        errorMsg.textContent = 'Incorrect password. Try again.';
+        input.classList.add('error');
+        input.value = '';
+        input.addEventListener('animationend', () => input.classList.remove('error'), { once: true });
+      }
+    });
+  </script>
 
 </body>
+
 </html>
