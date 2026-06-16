@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>School of Fun — The Great Outdoors</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --forest:  #1B3A2D;
+      --gold:    #E8A923;
+      --cream:   #F7F3EC;
+      --bark:    #5C3D1E;
+      --sky:     #C9E4F0;
+      --leaf:    #3D7A55;
+      --text:    #1a1a1a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      background: var(--forest);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Sky gradient */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, #0d2238 0%, #1a3d5c 30%, #2d6e8e 55%, var(--forest) 100%);
+      z-index: 0;
+    }
+
+    /* Stars */
+    .stars {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 50%;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .stars span {
+      position: absolute;
+      border-radius: 50%;
+      background: white;
+      animation: twinkle 3s infinite alternate;
+    }
+
+    @keyframes twinkle {
+      from { opacity: 0.3; }
+      to   { opacity: 1; }
+    }
+
+    /* SVG treeline */
+    .treeline {
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 100%;
+      z-index: 2;
+    }
+
+    /* Hero text */
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      padding: 2rem;
+      margin-bottom: 180px;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 8vw, 7rem);
+      font-weight: 900;
+      color: var(--cream);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .hero-title span {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .hero-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.2rem, 3vw, 2rem);
+      font-style: italic;
+      color: var(--sky);
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--forest);
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      padding: 0.85rem 2rem;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .hero-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+
+    /* Moon */
+    .moon {
+      position: absolute;
+      top: 10%;
+      right: 12%;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #fff9e6, #f5d97a);
+      box-shadow: 0 0 40px 10px rgba(248, 220, 100, 0.3);
+      z-index: 2;
+    }
+
+    /* ── PROJECTS SECTION ── */
+    .projects {
+      background: var(--cream);
+      padding: 5rem 2rem 6rem;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--leaf);
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--forest);
+    }
+
+    /* Card grid */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 4px;
+      overflow: hidden;
+      border-bottom: 4px solid var(--gold);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      transition: transform 0.25s, box-shadow 0.25s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.13);
+    }
+
+    .card-thumb {
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+    }
+
+    .card-body {
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-tag {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--leaf);
+      margin-bottom: 0.5rem;
+    }
+
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--forest);
+      margin-bottom: 0.75rem;
+    }
+
+    .card-desc {
+      font-size: 0.88rem;
+      color: #555;
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .card-link {
+      display: inline-block;
+      margin-top: 1.25rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--bark);
+      text-decoration: none;
+      border-bottom: 1.5px solid var(--gold);
+      padding-bottom: 1px;
+      transition: color 0.2s;
+    }
+    .card-link:hover { color: var(--forest); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--forest);
+      color: var(--sky);
+      text-align: center;
+      padding: 2.5rem 1rem;
+      font-size: 0.82rem;
+    }
+
+    footer strong {
+      font-family: 'Playfair Display', serif;
+      color: var(--gold);
+      font-size: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .hero-content { margin-bottom: 140px; }
+      .moon { width: 55px; height: 55px; right: 8%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .stars span { animation: none; }
+      .card, .hero-cta { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<header class="hero" id="top">
+
+  <div class="moon"></div>
+
+  <!-- Stars -->
+  <div class="stars" aria-hidden="true" id="starsContainer"></div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Welcome to</p>
+    <h1 class="hero-title">School of <span>Fun</span></h1>
+    <p class="hero-subtitle">The Great Outdoors</p>
+    <a href="#projects" class="hero-cta">Explore Projects ↓</a>
+  </div>
+
+  <!-- SVG Treeline -->
+  <svg class="treeline" viewBox="0 0 1440 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
+    <!-- Back hills -->
+    <ellipse cx="300" cy="240" rx="400" ry="120" fill="#1B3A2D" opacity="0.6"/>
+    <ellipse cx="1100" cy="240" rx="500" ry="100" fill="#1B3A2D" opacity="0.5"/>
+    <!-- Tree silhouettes back row -->
+    <g fill="#163326" opacity="0.8">
+      <polygon points="60,180 90,80 120,180"/>
+      <polygon points="100,180 135,60 170,180"/>
+      <polygon points="155,180 180,100 205,180"/>
+      <polygon points="220,180 255,55 290,180"/>
+      <polygon points="275,180 305,85 335,180"/>
+      <polygon points="340,180 370,70 400,180"/>
+      <polygon points="400,180 435,90 470,180"/>
+      <polygon points="470,180 505,65 540,180"/>
+      <polygon points="540,180 565,95 590,180"/>
+      <polygon points="600,180 640,50 680,180"/>
+      <polygon points="680,180 710,80 740,180"/>
+      <polygon points="740,180 775,60 810,180"/>
+      <polygon points="810,180 845,85 880,180"/>
+      <polygon points="880,180 915,70 950,180"/>
+      <polygon points="950,180 985,90 1020,180"/>
+      <polygon points="1020,180 1060,55 1100,180"/>
+      <polygon points="1100,180 1130,80 1160,180"/>
+      <polygon points="1160,180 1195,65 1230,180"/>
+      <polygon points="1230,180 1260,90 1290,180"/>
+      <polygon points="1300,180 1335,70 1370,180"/>
+      <polygon points="1370,180 1405,85 1440,180"/>
+    </g>
+    <!-- Front row darker trees -->
+    <g fill="#0e2419">
+      <polygon points="0,220 40,100 80,220"/>
+      <polygon points="70,220 115,75 160,220"/>
+      <polygon points="200,220 240,110 280,220"/>
+      <polygon points="320,220 370,80 420,220"/>
+      <polygon points="500,220 545,90 590,220"/>
+      <polygon points="650,220 700,65 750,220"/>
+      <polygon points="800,220 840,95 880,220"/>
+      <polygon points="950,220 1000,70 1050,220"/>
+      <polygon points="1100,220 1145,85 1190,220"/>
+      <polygon points="1280,220 1330,75 1380,220"/>
+      <polygon points="1380,220 1420,100 1460,220"/>
+    </g>
+    <!-- Ground fill -->
+    <rect x="0" y="195" width="1440" height="25" fill="#0e2419"/>
+  </svg>
+
+</header>
+
+<!-- ── PROJECTS ── -->
+<main class="projects" id="projects">
+  <div class="section-header">
+    <span class="section-label">Our Work</span>
+    <h2 class="section-title">Featured Projects</h2>
+  </div>
+
+  <div class="card-grid" id="cardGrid">
+
+    <article class="card">
+      <div class="card-thumb" style="background:#e8f5e9;">🌲</div>
+      <div class="card-body">
+        <span class="card-tag">Nature Study</span>
+        <h3 class="card-title">Forest Field Guide</h3>
+        <p class="card-desc">An interactive guide to local trees, plants, and wildlife — built for curious explorers of all ages.</p>
+        <a href="#" class="card-link">View Project →</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-thumb" style="background:#fff8e1;">⛺</div>
+      <div class="card-body">
+        <span class="card-tag">Camp Life</span>
+        <h3 class="card-title">Campfire Stories</h3>
+        <p class="card-desc">A collaborative storytelling platform where campers share tales from their adventures under the stars.</p>
+        <a href="#" class="card-link">View Project →</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-thumb" style="background:#e3f2fd;">🗺️</div>
+      <div class="card-body">
+        <span class="card-tag">Navigation</span>
+        <h3 class="card-title">Trail Mapper</h3>
+        <p class="card-desc">Student-built trail maps with elevation data, waypoints, and notes from real hikes in the field.</p>
+        <a href="#" class="card-link">View Project →</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-thumb" style="background:#fce4ec;">🌸</div>
+      <div class="card-body">
+        <span class="card-tag">Botany</span>
+        <h3 class="card-title">Wildflower Watch</h3>
+        <p class="card-desc">A seasonal bloom tracker crowdsourced by students, visualizing when and where wildflowers appear each year.</p>
+        <a href="#" class="card-link">View Project →</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-thumb" style="background:#e8f5e9;">🐦</div>
+      <div class="card-body">
+        <span class="card-tag">Wildlife</span>
+        <h3 class="card-title">Bird Call Archive</h3>
+        <p class="card-desc">Recordings, spectrograms, and drawings of birds spotted on campus — an ever-growing audio field journal.</p>
+        <a href="#" class="card-link">View Project →</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-thumb" style="background:#f3e5f5;">🌙</div>
+      <div class="card-body">
+        <span class="card-tag">Astronomy</span>
+        <h3 class="card-title">Night Sky Log</h3>
+        <p class="card-desc">Student stargazing journals combined into a living atlas of constellations, planets, and memorable nights.</p>
+        <a href="#" class="card-link">View Project →</a>
+      </div>
+    </article>
+
+  </div>
+</main>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <strong>School of Fun</strong>
+  <p style="margin-top:0.4rem; opacity:0.7;">The Great Outdoors · Made with curiosity &amp; fresh air</p>
+</footer>
+
+<script>
+  // Generate stars
+  const container = document.getElementById('starsContainer');
+  for (let i = 0; i < 80; i++) {
+    const s = document.createElement('span');
+    const size = Math.random() * 2.5 + 0.5;
+    s.style.cssText = `
+      width:${size}px; height:${size}px;
+      top:${Math.random() * 100}%;
+      left:${Math.random() * 100}%;
+      animation-delay:${Math.random() * 3}s;
+      animation-duration:${2 + Math.random() * 3}s;
+    `;
+    container.appendChild(s);
+  }
+</script>
+
+</body>
+</html>
