@@ -1113,6 +1113,31 @@
   </footer>
 
   <script>
+    document.querySelectorAll('.syllabus-download-btn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const isIOS = /iP(hone|ad|od)/.test(navigator.userAgent);
+        if (isIOS) {
+          window.open(this.href, '_blank');
+        } else {
+          fetch(this.href)
+            .then(res => res.blob())
+            .then(blob => {
+              const url = URL.createObjectURL(blob);
+              const a = document.createElement('a');
+              a.href = url;
+              a.download = 'syllabus.PNG';
+              document.body.appendChild(a);
+              a.click();
+              setTimeout(() => {
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+              }, 1000);
+            });
+        }
+      });
+    });
+
     function makeStars(containerId, count) {
       const container = document.getElementById(containerId);
       for (let i = 0; i < count; i++) {
