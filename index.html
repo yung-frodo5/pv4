@@ -12,7 +12,7 @@
   <meta property="og:url" content="http://pv4schooloffun.org" />
   <meta property="og:type" content="website" />
   <link
-    href="https://fonts.googleapis.com/css2?family=Modak&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Modak&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet" />
   <style>
     *,
@@ -338,6 +338,14 @@
       padding: 1.75rem 2rem;
     }
 
+    .syllabus-day.highlight {
+      background: #fff9ef;
+    }
+
+    .syllabus-day.highlight .syllabus-day-date {
+      font-weight: 900;
+    }
+
     #syllabus {
       font-family: 'Plus Jakarta Sans', sans-serif;
     }
@@ -345,7 +353,7 @@
     .syllabus-day-date {
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 1.6rem;
-      font-weight: 700;
+      font-weight: 400;
       color: var(--forest);
       text-align: left;
     }
@@ -400,8 +408,12 @@
     .event-name {
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 1.1rem;
-      font-weight: 700;
+      font-weight: 400;
       color: var(--forest);
+    }
+
+    .syllabus-day.highlight .event-name {
+      font-weight: 700;
     }
 
     .event-details {
@@ -932,7 +944,7 @@
         </ul>
       </div>
 
-      <div class="syllabus-day">
+      <div class="syllabus-day highlight">
         <div class="syllabus-day-header">
           <img class="calendar-icon" src="jul2.png" alt="Thursday, July 2" />
           <h3 class="syllabus-day-date">Thursday, July 2</h3>
@@ -963,7 +975,7 @@
         </ul>
       </div>
 
-      <div class="syllabus-day">
+      <div class="syllabus-day highlight">
         <div class="syllabus-day-header">
           <img class="calendar-icon" src="jul3.png" alt="Friday, July 3" />
           <h3 class="syllabus-day-date">Friday, July 3</h3>
@@ -992,7 +1004,7 @@
         </ul>
       </div>
 
-      <div class="syllabus-day">
+      <div class="syllabus-day highlight">
         <div class="syllabus-day-header">
           <img class="calendar-icon" src="jul4.png" alt="Saturday, July 4" />
           <h3 class="syllabus-day-date">Saturday, July 4</h3>
