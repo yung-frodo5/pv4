@@ -7,7 +7,7 @@
   <title>pv4</title>
   <link rel="icon" type="image/png" href="logo.PNG" />
   <link
-    href="https://fonts.googleapis.com/css2?family=Modak&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Modak&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
     rel="stylesheet" />
   <style>
     *,
@@ -131,7 +131,6 @@
       font-size: clamp(1rem, 5.5vw, 5rem);
       font-weight: 400;
       text-transform: uppercase;
-      white-space: nowrap;
       color: #6abf85;
       margin-bottom: 2.5rem;
     }
@@ -193,6 +192,35 @@
       font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 700;
       color: var(--forest);
+    }
+
+    #syllabus .section-title,
+    #classes .section-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    #classes {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .photo-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .photo-card {
+      border-radius: 4px;
+      overflow: hidden;
+      border-bottom: 4px solid var(--gold);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+    }
+
+    .photo-card img {
+      width: 100%;
+      display: block;
     }
 
     /* Card grid */
@@ -275,6 +303,18 @@
       color: var(--forest);
     }
 
+    /* ── CALENDAR ICON ── */
+    .syllabus-day-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .calendar-icon {
+      width: 56px;
+      flex-shrink: 0;
+    }
+
     /* ── SYLLABUS DAYS ── */
     .syllabus-days {
       display: flex;
@@ -292,12 +332,16 @@
       padding: 1.75rem 2rem;
     }
 
+    #syllabus {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
     .syllabus-day-date {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 1.6rem;
       font-weight: 700;
       color: var(--forest);
-      text-align: center;
+      text-align: left;
     }
 
     .syllabus-events {
@@ -320,6 +364,7 @@
       display: flex;
       align-items: center;
       gap: 0.6rem;
+      flex-wrap: wrap;
     }
 
     .event-badge {
@@ -347,7 +392,7 @@
     }
 
     .event-name {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 1.1rem;
       font-weight: 700;
       color: var(--forest);
@@ -400,6 +445,14 @@
         width: 55px;
         height: 55px;
         right: 8%;
+      }
+
+      .syllabus-day {
+        padding: 1.25rem 1rem;
+      }
+
+      .projects {
+        padding: 4rem 1rem 5rem;
       }
     }
 
@@ -579,7 +632,6 @@
       font-size: clamp(0.8rem, 4.5vw, 2rem);
       font-weight: 400;
       text-transform: uppercase;
-      white-space: nowrap;
       color: #6abf85;
       margin-bottom: 2rem;
     }
@@ -778,7 +830,7 @@
     <div id="nav-dropdown" role="menu">
       <a href="#top" role="menuitem">Home</a>
       <a href="#syllabus" role="menuitem">Syllabus</a>
-      <a href="#classes" role="menuitem">Classes</a>
+      <a href="#classes" role="menuitem">Yearbook</a>
     </div>
   </nav>
 
@@ -856,32 +908,38 @@
     </div>
     <div class="syllabus-days">
       <div class="syllabus-day">
-        <h3 class="syllabus-day-date">Wednesday, July 1</h3>
+        <div class="syllabus-day-header">
+          <img class="calendar-icon" src="jul1.png" alt="Wednesday, July 1" />
+          <h3 class="syllabus-day-date">Wednesday, July 1</h3>
+        </div>
         <ul class="syllabus-events">
           <li class="syllabus-event">
             <div class="event-title-row">
-              <span class="event-name">Canada Day</span>
-              <span class="event-badge optional">Optional</span>
+              <span class="event-name">Canada Day BBQ</span>
+              <span class="event-badge optional">Extra Credit</span>
             </div>
             <div class="event-details">
-              <span class="event-detail"><strong>TBD · TBD</strong></span>
-              <span class="event-detail">Description TODO</span>
+              <span class="event-detail"><strong>Dane's · 6:00 PM</strong></span>
+              <span class="event-detail">Kick off pv4 2026 with a Canada Day BBQ at Dane's lakeside. Patriotic vibes, good food, and a warm-up for the days ahead.</span>
             </div>
           </li>
         </ul>
       </div>
 
       <div class="syllabus-day">
-        <h3 class="syllabus-day-date">Thursday, July 2</h3>
+        <div class="syllabus-day-header">
+          <img class="calendar-icon" src="jul2.png" alt="Thursday, July 2" />
+          <h3 class="syllabus-day-date">Thursday, July 2</h3>
+        </div>
         <ul class="syllabus-events">
           <li class="syllabus-event">
             <div class="event-title-row">
-              <span class="event-name">Lakeside Lunch</span>
+              <span class="event-name">Day at the Lake</span>
               <span class="event-badge headliner">The Main Event</span>
             </div>
             <div class="event-details">
-              <span class="event-detail"><strong>Dane's · 12pm</strong></span>
-              <span class="event-detail">Description TODO</span>
+              <span class="event-detail"><strong>Dane's · 11:00 AM</strong></span>
+              <span class="event-detail">The centerpiece of the week — a full day on Dane's dock with swimming, sun, and whatever chaos ensues. Come ready for water.</span>
             </div>
           </li>
           <li class="syllabus-event">
@@ -892,49 +950,47 @@
               <span class="event-badge optional">Optional</span>
             </div>
             <div class="event-details">
-              <span class="event-detail"><strong>Jag's · Late Evening</strong></span>
-              <span class="event-detail">Description TODO</span>
+              <span class="event-detail"><strong>Jag's · 7:00 PM</strong></span>
+              <span class="event-detail">This year ain't themed "the great outdoors" for nothin! Buckle up campers, we are going on a hike and camping underneath the stars on top of a hill.</span>
             </div>
           </li>
         </ul>
       </div>
+
       <div class="syllabus-day">
-        <h3 class="syllabus-day-date">Friday, July 3</h3>
+        <div class="syllabus-day-header">
+          <img class="calendar-icon" src="jul3.png" alt="Friday, July 3" />
+          <h3 class="syllabus-day-date">Friday, July 3</h3>
+        </div>
         <ul class="syllabus-events">
-          <li class="syllabus-event">
-            <div class="event-title-row">
-              <span class="event-name">Breakfast</span>
-              <span class="event-badge optional">Optional</span>
-            </div>
-            <div class="event-details">
-              <span class="event-detail"><strong>Jag's · Morning</strong></span>
-              <span class="event-detail">Description TODO</span>
-            </div>
-          </li>
           <li class="syllabus-event">
             <div class="event-title-row">
               <span class="event-name">Beach Day</span>
               <span class="event-badge classic">An Absolute Classic</span>
             </div>
             <div class="event-details">
-              <span class="event-detail"><strong>Redondo Volleyball Nets · Afternoon</strong></span>
-              <span class="event-detail">Description TODO</span>
+              <span class="event-detail"><strong>Redondo Volleyball Nets · 12:00 PM</strong></span>
+              <span class="event-detail">Omg there is sand everywhere! Yeah, it's the beach. Grow up! Go shred the gnar and hang ten bro.</span>
             </div>
           </li>
           <li class="syllabus-event">
             <div class="event-title-row">
-              <span class="event-name">Tacos at Jag's</span>
+              <span class="event-name">Taco Night</span>
               <span class="event-badge headliner">The Main Event</span>
             </div>
             <div class="event-details">
-              <span class="event-detail"><strong>Jag's · Evening</strong></span>
-              <span class="event-detail">Description TODO</span>
+              <span class="event-detail"><strong>Jag's · 6:30 PM</strong></span>
+              <span class="event-detail">LeBron, Messi, Taco man. An annual tradition that brings out the best dance moves and flip cup skills. Lock the fuck in.</span>
             </div>
           </li>
         </ul>
       </div>
+
       <div class="syllabus-day">
-        <h3 class="syllabus-day-date">Saturday, July 4</h3>
+        <div class="syllabus-day-header">
+          <img class="calendar-icon" src="jul4.png" alt="Saturday, July 4" />
+          <h3 class="syllabus-day-date">Saturday, July 4</h3>
+        </div>
         <ul class="syllabus-events">
           <li class="syllabus-event">
             <div class="event-title-row">
@@ -942,24 +998,37 @@
               <span class="event-badge headliner">The Main Event</span>
             </div>
             <div class="event-details">
-              <span class="event-detail"><strong>Noah's · 11am</strong></span>
-              <span class="event-detail">Description TODO</span>
+              <span class="event-detail"><strong>Noah's · 11:00 AM</strong></span>
+              <span class="event-detail">Hang out at The Clubhouse: the all-in-one sport facility, BBQ grill, and resort &amp; spa. We'll be missing Ricardo Huevos on the grill, but the team is ready to put on a show!</span>
             </div>
           </li>
         </ul>
       </div>
 
       <div class="syllabus-day">
-        <h3 class="syllabus-day-date">Sunday, July 5</h3>
+        <div class="syllabus-day-header">
+          <img class="calendar-icon" src="jul5.png" alt="Sunday, July 5" />
+          <h3 class="syllabus-day-date">Sunday, July 5</h3>
+        </div>
         <ul class="syllabus-events">
           <li class="syllabus-event">
             <div class="event-title-row">
-              <span class="event-name">Farewell Gathering</span>
-              <span class="event-badge optional">Optional</span>
+              <span class="event-name">Morning Yoga</span>
+              <span class="event-badge optional">Extra Credit</span>
             </div>
             <div class="event-details">
-              <span class="event-detail"><strong>TBD · Morning</strong></span>
-              <span class="event-detail">Description TODO</span>
+              <span class="event-detail"><strong>Noah's · ~10:00 AM</strong></span>
+              <span class="event-detail">Departure day begins with an optional breakfast and stretch-fest. Gratitude circle not promised but likely.</span>
+            </div>
+          </li>
+          <li class="syllabus-event">
+            <div class="event-title-row">
+              <span class="event-name">Farewell Brunch</span>
+              <span class="event-badge optional">Extra Credit</span>
+            </div>
+            <div class="event-details">
+              <span class="event-detail"><strong>Original Pancake House · ~12:00 PM</strong></span>
+              <span class="event-detail">Didn't indulge in enough gluttony? Still pining for more? Can't get enough? We're disgusted with ourselves too.</span>
             </div>
           </li>
         </ul>
@@ -970,8 +1039,15 @@
   <!-- ── CLASSES ── -->
   <section class="projects" id="classes">
     <div class="section-header">
-      <span class="section-label">Yearbook photos</span>
-      <h2 class="section-title">Classes</h2>
+      <span class="section-label">Class photos</span>
+      <h2 class="section-title">Yearbook</h2>
+    </div>
+    <div class="photo-grid">
+      <div class="photo-card"><img src="counselors.png" alt="Counselors" /></div>
+      <div class="photo-card"><img src="colin.png" alt="Colin" /></div>
+      <div class="photo-card"><img src="korotzer.png" alt="Korotzer" /></div>
+      <div class="photo-card"><img src="whitten.png" alt="Whitten" /></div>
+      <div class="photo-card"><img src="satellite.png" alt="Satellite" /></div>
     </div>
   </section>
 
