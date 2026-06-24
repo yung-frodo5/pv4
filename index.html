@@ -43,6 +43,7 @@
       background: var(--cream);
       color: var(--text);
       overflow-x: hidden;
+      position: relative;
     }
 
     /* ── HERO ── */
@@ -686,7 +687,7 @@
       border-radius: 2px;
       color: var(--cream);
       font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
+      font-size: 1rem;
       letter-spacing: 0.05em;
       outline: none;
       transition: border-color 0.2s;
@@ -857,7 +858,7 @@
       <p class="gate-subtitle">The Great Outdoors</p>
       <form id="gateForm" novalidate>
         <input id="gateInput" class="gate-input" type="password" placeholder="Enter password"
-          autocomplete="current-password" aria-label="Password" autofocus />
+          autocomplete="current-password" aria-label="Password" />
         <button type="submit" class="gate-btn">Enter ↓</button>
       </form>
       <p class="gate-error-msg" id="gateError" aria-live="polite"></p>
@@ -987,11 +988,10 @@
             </div>
           </li>
           <li class="syllabus-event">
-            <span class="event-sponsor"><button class="alien-btn" id="alienTrigger"
-                aria-label="Secret alien button">👽</button> Sponsored by TTN</span>
             <div class="event-title-row">
               <span class="event-name">Overnight Camping</span>
-              <span class="event-badge optional">Optional</span>
+              <span class="event-badge classic">Sponsored by TTN</span>
+              <button class="alien-btn alien-trigger" aria-label="Secret alien button">👽</button>
             </div>
             <div class="event-details">
               <span class="event-detail"><strong>Jag's · 7:00 PM</strong></span>
@@ -1194,7 +1194,7 @@
 
     // Alien easter egg
     const alienModal = document.getElementById('alienModal');
-    document.querySelectorAll('#alienTrigger, .alien-footer-btn').forEach(btn => {
+    document.querySelectorAll('.alien-footer-btn, .alien-trigger').forEach(btn => {
       btn.addEventListener('click', () => alienModal.classList.add('open'));
     });
     document.getElementById('alienClose').addEventListener('click', () => alienModal.classList.remove('open'));
